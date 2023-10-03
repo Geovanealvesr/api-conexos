@@ -1,4 +1,4 @@
-import app from "./app";
+import app from "./src/app";
 import db from "./src/config/database";
 import dotenv from "dotenv";
 

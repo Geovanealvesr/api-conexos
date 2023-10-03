@@ -13,4 +13,14 @@ const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
 	host: dbHost,
 });
 
+async function hasConnection(){
+    try{
+        await sequelize.authenticate();
+        console.log("DB connect")
+    }catch(error){
+        console.log("Falha ao acessar o DB");
+    }
+}
+Object.assign(sequelize, {hasConnection});
+
 export default sequelize;
