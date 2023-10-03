@@ -32,7 +32,8 @@ const Ordens = db.define("Ordens", {
 		allowNull: false,
 	},
 	status: {
-		type: Sequelize.STRING(100)
+		type: Sequelize.STRING(100),
+		allowNull: true,
 	},
 });
 

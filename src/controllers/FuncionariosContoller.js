@@ -1,4 +1,4 @@
-import Funcionarios from "../models/funcionarios.js"; // Make sure to import the "Funcionarios" model
+import Funcionarios from "../models/funcionarios.js"; 
 
 class FuncionariosController {
   async create(req, res) {
