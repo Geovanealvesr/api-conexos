@@ -9,12 +9,10 @@ app.use(express.json());
 
 app.use(routes);
 
-app.listen(3000, ()=> console.log("Servidor rodando na porta 3000!"));
+app.listen(3000, () => console.log("Servidor rodando na porta 3000!"));
 
 sequelize.sync({ force: true }).then(() => {
     console.log('Tabelas criadas com sucesso!');
-  }).catch((error) => {
+}).catch((error) => {
     console.error('Erro ao criar tabelas:', error);
-  });
-
-export default app;
+});

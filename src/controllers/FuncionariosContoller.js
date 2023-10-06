@@ -1,14 +1,17 @@
 import Funcionarios from "../models/funcionarios.js"; 
+import bcrypt from "bcryptjs";
+
 
 class FuncionariosController {
   async create(req, res) {
     try {
       const { nome, codigo, senha } = req.body;
+      const newSenha = bcrypt.hashSync(senha, 10);
 
       const funcionario = await Funcionarios.create({
         nome: nome,
         codigo: codigo,
-        senha: senha,
+        senha: newSenha,
       });
 
       res.status(201).json(funcionario);
@@ -88,6 +91,9 @@ class FuncionariosController {
       res.status(500).json({ error: error.message });
     }
   }
+
+  async 
+
 }
 
 export default new FuncionariosController();
