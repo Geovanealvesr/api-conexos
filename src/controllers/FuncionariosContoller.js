@@ -4,6 +4,7 @@ import bcrypt from "bcryptjs";
 
 class FuncionariosController {
   async create(req, res) {
+    console.log(req.user);
     try {
       const { nome, codigo, senha } = req.body;
       const newSenha = bcrypt.hashSync(senha, 10);

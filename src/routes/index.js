@@ -2,6 +2,7 @@ import express from "express";
 import OrdensController from "../controllers/OrdensController.js";
 import FuncionariosController from "../controllers/FuncionariosContoller.js";
 import AuthContoller from "../controllers/AuthController.js"
+import Auth from "../middlewares/auth.js"
 
 
 const router = express.Router();
@@ -15,7 +16,7 @@ router.delete("/ordens/:id", OrdensController.delete);
 
 // Routes para funcionarios
 
-router.post("/funcionarios", FuncionariosController.create)
+router.post("/funcionarios", Auth, FuncionariosController.create)
 router.get("/funcionarios", FuncionariosController.getAll);
 router.get("/funcionarios/:id", FuncionariosController.getById);
 router.put("/funcionarios/:id", FuncionariosController.update);
