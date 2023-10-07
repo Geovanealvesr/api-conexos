@@ -16,7 +16,7 @@ router.delete("/ordens/:id", OrdensController.delete);
 
 // Routes para funcionarios
 
-router.post("/funcionarios", Auth, FuncionariosController.create)
+router.post("/funcionarios", FuncionariosController.create)
 router.get("/funcionarios", FuncionariosController.getAll);
 router.get("/funcionarios/:id", FuncionariosController.getById);
 router.put("/funcionarios/:id", FuncionariosController.update);

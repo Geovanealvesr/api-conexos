@@ -1,11 +1,15 @@
 import express from "express";
 import routes from "./src/routes/index.js";
 import sequelize from "./src/config/database.js";
+import cors from "cors";
+
 
 const app = express();
 sequelize.hasConnection();
 
 app.use(express.json());
+
+app.use(cors());
 
 app.use(routes);
 

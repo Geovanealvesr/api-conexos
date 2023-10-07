@@ -15,13 +15,13 @@ const AuthController = {
       });
 
       if (!usuario) {
-        return res.status(400).json({ error: "Código de acesso não cadastrado!" });
+        return res.status(400).json({ error: "Código de acesso ou senha inválidos!" });
       }
 
       const senhaValida = bcrypt.compareSync(senha, usuario.senha);
 
       if (!senhaValida) {
-        return res.status(401).json({ error: "Código de acesso ou senha inválidos!" });
+        return res.status(401).json({ error: "Acesso não autorizado!" });
       }
 
       const token = jwt.sign(
@@ -32,7 +32,7 @@ const AuthController = {
         },
         key 
         ,
-        { expiresIn: '1h' } // Define um tempo de expiração para o token (por exemplo, 1 hora)
+        { expiresIn: '5h' } 
       );
 
       return res.json({ token });
