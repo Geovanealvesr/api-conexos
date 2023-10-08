@@ -2,8 +2,13 @@ import Ordens from "../models/ordens.js";
 class OrdensController {
   async create(req, res) {
     try {
-      const { nome, cpf, telefone, email, plano, horario } = req.body;
-
+      const { nome, cpf, telefone, email, plano, horario, status } = req.body;
+  
+      if (!status) {
+        // Handle the case where 'status' is missing in the request body
+        return res.status(400).json({ error: "Missing 'status' field in request body" });
+      }
+  
       const ordem = await Ordens.create({
         nome: nome,
         cpf: cpf,
@@ -11,13 +16,16 @@ class OrdensController {
         email: email,
         plano: plano,
         horario: horario,
+        status: status, // Ensure 'status' is provided
       });
-
+  
       res.status(201).json(ordem);
     } catch (error) {
       res.status(500).json({ error: error.message });
+      console.log("deu erro: ", error);
     }
   }
+  
 
   async getAll(req, res) {
     try {
