@@ -5,8 +5,8 @@ class OrdensController {
       const { nome, cpf, telefone, email, plano, horario, status } = req.body;
   
       if (!status) {
-        // Handle the case where 'status' is missing in the request body
-        return res.status(400).json({ error: "Missing 'status' field in request body" });
+        
+        return res.status(400).json({ error: "Falta o campo 'status' no corpo da solicitação" });
       }
   
       const ordem = await Ordens.create({
@@ -16,13 +16,13 @@ class OrdensController {
         email: email,
         plano: plano,
         horario: horario,
-        status: status, // Ensure 'status' is provided
+        status: status, 
       });
   
       res.status(201).json(ordem);
     } catch (error) {
       res.status(500).json({ error: error.message });
-      console.log("deu erro: ", error);
+      console.log("deu erro: ", error); // Retirar depois do desenvolvimento
     }
   }
   

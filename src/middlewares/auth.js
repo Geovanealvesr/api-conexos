@@ -19,7 +19,7 @@ export default (req, res, next) => {
   try {
     const data = JWT.verify(token, key);
 
-    // Adicione os dados do usuário autenticado ao objeto de requisição para uso posterior
+  
     req.AUTH = data;
 
     return next();
