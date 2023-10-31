@@ -15,7 +15,7 @@ app.use(routes);
 
 app.listen(3000, () => console.log("Servidor rodando na porta 3000!"));
 
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync().then(() => {
     console.log('Tabelas criadas com sucesso!');
 }).catch((error) => {
     console.error('Erro ao criar tabelas:', error);
